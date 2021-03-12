@@ -1,15 +1,6 @@
 name: Run Operator SDK tests, release new operator images if tests succeed
 
-on:
-  schedule:
-    - cron: '0 1 * * *' # everyday at 1am
-  push:
-    branches:
-      - develop
-      - main
-  pull_request:
-    branches:
-      - develop
+on: push
 
 jobs:
   test-cluster:
