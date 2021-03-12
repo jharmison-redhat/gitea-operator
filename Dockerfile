@@ -1,7 +1,7 @@
 FROM quay.io/operator-framework/ansible-operator:v1.4.2
 
 COPY requirements ${HOME}
-RUN pip install --upgrade -r ${HOME}/requirements.txt \
+RUN pip3 install --user --upgrade -r ${HOME}/requirements.txt \
  && ansible-galaxy collection install -r ${HOME}/requirements.yml \
  && chmod -R ug+rwx ${HOME}/.ansible
 
