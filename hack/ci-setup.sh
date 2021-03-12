@@ -13,7 +13,8 @@ pip3 install --user --upgrade setuptools wheel pip
 pip3 install --user docker ansible molecule ansible-lint yamllint flake8 openshift jmespath
 
 # Ansible dependencies
-ansible-galaxy collection install -r requirements.yml
+pip3 install --user --upgrade -r requirements/requirements.txt
+ansible-galaxy collection install -r requirements/requirements.yml
 
 # Kind CLI (for loading images into cluster)
 curl -Lo $HOME/.local/bin/kind https://kind.sigs.k8s.io/dl/v0.10.0/kind-linux-amd64
