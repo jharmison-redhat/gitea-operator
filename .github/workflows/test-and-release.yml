@@ -15,7 +15,7 @@ jobs:
         with:
           config: molecule/kind-cluster/files/kind-config.yml
           name: osdk-test
-          version: v0.9.0
+          version: v0.10.0
       - name: Prereq setup
         run: hack/ci-setup.sh
       - name: Test
@@ -33,7 +33,7 @@ jobs:
         with:
           config: molecule/kind-cluster/files/kind-config.yml
           name: osdk-test
-          version: v0.9.0
+          version: v0.10.0
       - name: Prereq setup
         run: hack/ci-setup.sh
       - name: Test

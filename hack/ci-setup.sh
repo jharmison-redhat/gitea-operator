@@ -16,7 +16,7 @@ pip3 install --user docker ansible molecule ansible-lint yamllint flake8 openshi
 ansible-galaxy collection install -r requirements.yml
 
 # Kind CLI (for loading images into cluster)
-curl -Lo $HOME/.local/bin/kind https://kind.sigs.k8s.io/dl/v0.9.0/kind-linux-amd64
+curl -Lo $HOME/.local/bin/kind https://kind.sigs.k8s.io/dl/v0.10.0/kind-linux-amd64
 chmod +x $HOME/.local/bin/kind
 
 # Helm CLI (for loading Ingress)
