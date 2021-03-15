@@ -38,7 +38,7 @@
             name: '{{ item.metadata.name }}'
             namespace: '{{ namespace }}'
             container: manager
-          loop: "{{ q('k8s', api_version='v1', kind='Pod', namespace=namespace, label_selector=ctrl_label) }}"
+          loop: "{{ q('community.kubernetes.k8s', kubeconfig=kubeconfig, api_version='v1', kind='Pod', namespace=namespace, label_selector=ctrl_label) }}"
           register: debug_controller_logs
           ignore_errors: true
 
@@ -46,7 +46,7 @@
           k8s_log:
             name: '{{ item.metadata.name }}'
             namespace: '{{ namespace }}'
-          loop: "{{ q('k8s', api_version='v1', kind='Pod', namespace=namespace, label_selector='app=gitea-testing') }}"
+          loop: "{{ q('community.kubernetes.k8s', kubeconfig=kubeconfig, api_version='v1', kind='Pod', namespace=namespace, label_selector='app=gitea-testing') }}"
           register: debug_app_logs
           ignore_errors: true
 
