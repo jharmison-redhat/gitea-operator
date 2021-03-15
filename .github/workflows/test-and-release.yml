@@ -14,7 +14,7 @@ jobs:
         uses: engineerd/setup-kind@v0.5.0
         with:
           config: molecule/kind/files/kind-config.yml
-          name: osdk-test
+          name: osdk-test-cluster
           version: v0.10.0
       - name: Prereq setup
         run: hack/ci-setup.sh
@@ -32,7 +32,7 @@ jobs:
         uses: engineerd/setup-kind@v0.5.0
         with:
           config: molecule/kind/files/kind-config.yml
-          name: osdk-test
+          name: osdk-test-namespace
           version: v0.10.0
       - name: Prereq setup
         run: hack/ci-setup.sh
