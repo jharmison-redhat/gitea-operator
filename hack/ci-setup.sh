@@ -1,10 +1,20 @@
 #!/bin/bash -ex
 # Installs dependencies needed to run the tests in CI environment
 
+function ll {
+    ls -halF "${@}"
+}
 
 mkdir -p $HOME/.local/bin
 export PATH="$HOME/.local/bin:$PATH"
-export KUBECONFIG=$HOME/.kube/config
+export KUBECONFIG=${KUBECONFIG:-$HOME/.kube/config}
+echo $KUBECONFIG
+ll $HOME/.kube
+kubectl config current-context
+kind version
+for detail in clusters nodes kubeconfig; do
+    kind get $detail
+done
 
 # Basic pip prereqs
 pip3 install --user --upgrade setuptools wheel pip
@@ -15,10 +25,6 @@ pip3 install --user docker ansible molecule ansible-lint yamllint flake8 openshi
 # Ansible dependencies
 pip3 install --user --upgrade -r requirements/requirements.txt
 ansible-galaxy collection install -r requirements/requirements.yml
-
-# Kind CLI (for loading images into cluster)
-curl -Lo $HOME/.local/bin/kind https://kind.sigs.k8s.io/dl/v0.10.0/kind-linux-amd64
-chmod +x $HOME/.local/bin/kind
 
 # Helm CLI (for loading Ingress)
 curl -Lo $HOME/helm.tgz https://get.helm.sh/helm-v3.5.2-linux-amd64.tar.gz
