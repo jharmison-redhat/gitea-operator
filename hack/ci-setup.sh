@@ -12,8 +12,10 @@ echo $KUBECONFIG
 ll $HOME/.kube
 kubectl config current-context
 kind version
-for detail in clusters nodes kubeconfig; do
-    kind get $detail
+clusters=$(kind get clusters)
+for cluster in $clusters; do
+    kind get nodes --name $cluster
+    kind get kubeconfig --name $cluster
 done
 
 # Basic pip prereqs
