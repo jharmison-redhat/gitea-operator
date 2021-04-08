@@ -114,6 +114,8 @@
     debug_output:
       namespace_modded_cr: '{{ namespace_modded_cr }}'
       scope: '{{ scope }}'
+      test_left: '{{ namespace_modded_cr.resources[0].status is not defined }}'
+      test_right: '{{ scope == "namespace" }}'
 
 - name: Verify that Gitea failed to be created from the CR when appropriate
   assert:
