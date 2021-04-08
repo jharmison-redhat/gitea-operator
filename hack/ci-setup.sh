@@ -22,7 +22,7 @@ done
 pip3 install --user --upgrade setuptools wheel pip
 
 # Dependencies for test environment
-pip3 install --user docker ansible molecule ansible-lint yamllint flake8 openshift jmespath
+pip3 install --user -r requirements/test-requirements.txt
 
 # Ansible dependencies
 pip3 install --user --upgrade -r requirements/requirements.txt
