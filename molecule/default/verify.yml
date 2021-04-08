@@ -37,7 +37,7 @@
           k8s_log:
             namespace: '{{ namespace }}'
             label_selectors:
-            - '{{ ctrl_label }}'
+              - '{{ ctrl_label }}'
             container: manager
           register: debug_controller_logs
           ignore_errors: true
@@ -46,7 +46,7 @@
           k8s_log:
             namespace: '{{ namespace }}'
             label_selectors:
-            - app=gitea-testing
+              - app=gitea-testing
           register: debug_app_logs
           ignore_errors: true
 
@@ -58,8 +58,8 @@
           debug:
             var: item.log_lines
           loop:
-          - debug_controller_logs
-          - debug_app_logs
+            - debug_controller_logs
+            - debug_app_logs
 
         - name: Re-emit failure
           vars:
