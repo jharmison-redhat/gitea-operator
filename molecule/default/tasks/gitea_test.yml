@@ -107,6 +107,14 @@
   delay: 60
   ignore_errors: true
 
+- name: Output some extra debugging info
+  debug:
+    var: debug_output
+  vars:
+    debug_output:
+      namespace_modded_cr: '{{ namespace_modded_cr }}'
+      scope: '{{ scope }}'
+
 - name: Verify that Gitea failed to be created from the CR when appropriate
   assert:
     that: namespace_modded_cr.resources[0].status is not defined == (scope == "namespace")
