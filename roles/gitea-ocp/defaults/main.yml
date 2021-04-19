@@ -11,6 +11,8 @@ _gitea_postgresql_database_name: giteadb
 _gitea_postgresql_user: giteauser
 _gitea_postgresql_password: giteapassword
 
+_gitea_ini_managed: true
+
 _gitea_persistent: true
 _gitea_volume_size: 1Gi
 

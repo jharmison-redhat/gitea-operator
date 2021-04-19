@@ -38,6 +38,8 @@
       _gitea_ssl: "{{ gitea.expose.ssl | default(True) }}"
       _gitea_load_balancer: "{{ gitea.expose.load_balancer | default(False) }}"
 
+      _gitea_ini_managed: "{{ gitea.ini_file.managed | default(True) }}"
+
       _gitea_image: "{{ gitea.image.src | default('quay.io/redhatgov/gitea') }}"
       _gitea_image_tag: "{{ gitea.image.tag | default('latest') }}"
       _gitea_image_pull_policy: "{{ gitea.image.pull_policy | default('IfNotPresent') }}"

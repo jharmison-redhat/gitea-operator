@@ -67,14 +67,9 @@
   when: _gitea_load_balancer
 
 - name: Set Route dependant OpenShift Objects for Gitea to {{ _gitea_state }}
-  k8s:
-    state: "{{ _gitea_state }}"
-    merge_type:
-    - strategic-merge
-    - merge
-    definition: "{{ lookup('template', item ) | from_yaml }}"
+  include_tasks: '{{ item }}'
   loop:
-  - config_map.yml.j2
+  - app_ini.yml
 
 - name: Wait until application is available
   when:

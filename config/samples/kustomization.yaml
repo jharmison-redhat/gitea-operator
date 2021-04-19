@@ -5,4 +5,6 @@ resources:
 - redhatgov_v1alpha1_gitea.yaml
 - redhatgov_v1alpha1_gitea_molecule.yaml
 - redhatgov_v1alpha1_gitea_openshift.yaml
+- redhatgov_v1alpha1_gitea_openshift_unmanaged.yaml
+- redhatgov_v1alpha1_gitea_user_openshift.yaml
 # +kubebuilder:scaffold:manifestskustomizesamples

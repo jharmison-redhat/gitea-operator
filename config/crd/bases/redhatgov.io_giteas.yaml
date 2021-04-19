@@ -101,6 +101,15 @@ spec:
                         - IfNotPresent
                         - Never
                         default: IfNotPresent
+                  iniFile:
+                    description: Defines the ways in which the Gitea app.ini should be templated and managed
+                    type: object
+                    properties:
+                      managed:
+                        description: |
+                          Defines whether or not the app.ini file should be managed, overwriting user modifications
+                        type: boolean
+                        default: True
                   volumeSize:
                     description: |
                       Defines the size of the volume, measured in bytes, that should be requested for Gitea's data

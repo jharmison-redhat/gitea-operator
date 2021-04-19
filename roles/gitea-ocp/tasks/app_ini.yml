@@ -1,0 +1,28 @@
+---
+- name: Set ConfigMap for Gitea app.ini to absent
+  k8s:
+    state: absent
+    definition: "{{ lookup('template', 'config_map.yml.j2' ) | from_yaml }}"
+  when:
+  - _gitea_state == "absent"
+
+- name: Check for existing Gitea app.ini ConfigMap
+  k8s_info:
+    kind: ConfigMap
+    apiVersion: v1
+    name: "{{ _gitea_name }}-config"
+    namespace: "{{ _gitea_namespace }}"
+  register: _gitea_config_map
+
+# Only create/update the ConfigMap if the user desires a managed configuration,
+#   or if it doesn't exist at all. This enables the user to change the
+#   content of the ConfigMap and bounce pods without being overwritten during
+#   a reconciliation loop.
+- name: Set ConfigMap for Gitea app.ini to present
+  k8s:
+    state: present
+    apply: true
+    definition: "{{ lookup('template', 'config_map.yml.j2' ) | from_yaml }}"
+  when:
+  - _gitea_state == "present"
+  - (_gitea_config_map.resources|length == 0) or _gitea_ini_managed

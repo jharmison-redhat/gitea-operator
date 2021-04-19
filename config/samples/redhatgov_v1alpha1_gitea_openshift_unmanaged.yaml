@@ -1,0 +1,8 @@
+apiVersion: redhatgov.io/v1alpha1
+kind: Gitea
+metadata:
+  name: gitea
+spec:
+  gitea:
+    iniFile:
+      managed: false
